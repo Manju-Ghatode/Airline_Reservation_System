@@ -1,0 +1,139 @@
+<?php
+	session_start();
+?>
+<html>
+	<head>
+		<title>
+			Add Flight Schedule Details
+		</title>
+		<style>
+			input {
+    			border: 1.5px solid #030337;
+    			border-radius: 4px;
+    			padding: 7px 30px;
+			}
+			input[type=submit] {
+				background-color: #030337;
+				color: white;
+    			border-radius: 4px;
+    			padding: 7px 45px;
+    			margin: 0px 200px;
+			}
+			body{
+				background-color: rgba(24, 199, 223, 0.808);
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
+	</head>
+	<body>
+		<img class="logo" src="  "/> 
+		<h1 id="title">
+			INDIAN AIRLINES
+		</h1>
+		<div>
+			<ul>
+				<li><a href="home_page.php">Home</a></li>
+				<li><a href="admin_homepage.php"> Dashboard</a></li>
+				<li><a href="logout_handler.php">Logout</a></li>
+			</ul>
+		</div>
+		<form action="https://sheetdb.io/api/v1/sqrkcetcgkdz2" method="post" id="sheetdb-form">
+			<h2>ENTER THE FLIGHT SCHEDULE DETAILS</h2>
+			<table cellpadding="5">
+				<tr>
+					<td class="fix_table">Flight Number</td>
+				</tr>
+				<tr>
+					<td class="fix_table"><input type="text" name="data[flight_no]" required></td>
+				</tr>
+			</table>
+			<br>
+			<hr>
+			<table cellpadding="5">
+				<tr>
+					<td class="fix_table">Name</td>
+					<td class="fix_table">Age</td>
+				</tr>
+				<tr>
+					<td class="fix_table"><input type="text" name="data[name]" required></td>
+					<td class="fix_table"><input type="text" name="data[age]" required></td>
+				</tr>
+			</table>
+			<br>
+			<hr>
+          <table cellpadding="5">
+				<tr>
+					<td class="fix_table">Origin</td>
+					<td class="fix_table">Destination</td>
+				</tr>
+				<tr>
+					<td class="fix_table"><input type="text" name="data[origin]" required></td>
+					<td class="fix_table"><input type="text" name="data[destination]" required></td>
+				</tr>
+			</table>
+			<table cellpadding="5">
+				<tr>
+					<td class="fix_table">Departure Date</td>
+					<td class="fix_table">Arrival Date</td>
+				</tr>
+				<tr>
+					<td class="fix_table"><input type="date" name="data[dep_date]" required></td>
+					<td class="fix_table"><input type="date" name="data[arr_date]" required></td>
+				</tr>
+			</table>
+			<br>
+			<hr>
+			<table cellpadding="5">
+				<tr>
+					<td class="fix_table">Departure Time</td>
+					<td class="fix_table">Arrival Time</td>
+				</tr>
+				<tr>
+					<td class="fix_table"><input type="time" name="data[dep_time]" required></td>
+					<td class="fix_table"><input type="time" name="data[arr_time]" required></td>
+				</tr>
+			</table>
+			<br>
+			<hr>
+			<table cellpadding="5">
+				<tr>
+                  <td class="fix_table">Ticket Price</td>
+				</tr>
+			</table>
+			<table cellpadding="5">
+				<tr>
+					<td class="fix_table">
+						<input type="number" name="data[price]" required>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<hr>
+			<br>
+			<input type="Submit" value="payment" name="payment">
+			
+		</form>
+		<!--check out addling local host in links and other places
+		-->
+
+		<script>
+			var  form = document.getElementById('sheetdb.form');
+		form.addEventListener("Submit",e=>{
+			e.preventDefault();
+			fetch(form.action,{
+				method : "POST",
+				body : new FormData(document.getElementById("sheetdb-form")),
+
+			}).then(
+				response=>response.json()
+			).then((html)=>{
+				window.open('d.html','_blank');
+			});
+		});
+
+
+		alert("Payment Successful");
+		</script>
+	</body>
+</html>
